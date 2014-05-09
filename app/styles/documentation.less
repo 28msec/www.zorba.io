@@ -1,0 +1,405 @@
+//@import "variables.less";
+//@import "mixins.less";
+
+@media print {
+    .sidebar {
+        display: none;
+    }
+}
+
+#docnav {
+    //position:fixed;
+    //top: @navbar-height;
+    //height: 150px;
+    //z-index: @zindex-navbar;
+
+    .container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    
+    
+}
+
+@media (max-width: @screen-sm-max) {
+    #docnav {
+        width: 100% !important;
+    }
+}
+
+#docsearch {
+    margin-top: 15px;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+
+    &::-webkit-input-placeholder {
+        font-style: italic;
+        font-weight: 300;
+    }
+    
+    &::-moz-placeholder {
+        font-style: italic;
+        font-weight: 300;
+    }
+    
+    &:-ms-input-placeholder {
+        font-style: italic;
+        font-weight: 300;
+    }
+    
+    &:-moz-placeholder {
+        font-style: italic;
+        font-weight: 300;
+    }
+}
+
+.typeahead.dropdown-menu {
+    .match {
+        padding: 15px;
+        border-bottom: 1px solid @clouds;
+        
+        h4 {
+            line-height: 1.5em;
+            font-weight: normal;
+        }
+    }
+    
+    em.hlt1 {
+        font-weight: bold !important;
+        font-style: normal;
+    }
+
+    .type {
+        color: white;
+        //font-family: @font-family-monospace;
+        //padding: 10px;
+        border-radius: 4px;
+        margin-right: 15px;
+        height: 40px;
+        width: 40px;
+        display: inline-block;
+        text-align: center;
+        line-height: 40px;
+    }
+    
+    .type-module {
+        background-color: @belize-hole;
+    }
+
+    .type-function {
+        background-color: lighten(@peter-river, 10%);
+        font-family: 'CambriaIta', "proxima-nova", "Helvetica Neue", Helvetica, Arial,sans-serif;
+        font-size: 0.8em;
+        
+        &:before { 
+            //content: 'f(x)';
+        }
+    }
+    
+    .type-api {
+        background-color: @nephritis;
+    }
+    
+    .type-resource {
+        background-color: lighten(@nephritis, 10%);
+    }
+    
+    li.active > .match {
+        background-color: @clouds;
+    }   
+}
+
+.toc {
+    .inner {
+    display: table;
+    width: 100%;
+    
+    a {
+        display: block;
+        padding: 15px;
+        text-decoration: none !important;
+        font-size: 28px;
+        font-weight: 300;
+        display: table-cell;
+        text-align:center; 
+        vertical-align:middle;
+        clear:both;
+        height: 150px;
+        position:relative;
+    }
+    }
+}
+
+.breadcrumb {
+    margin-top: 15px;
+    a {
+        font-weight: 300;
+    }
+    .active a {
+        cursor: default !important;
+        color: @text-color !important;
+        &:hover {
+            text-decoration: none !important;
+        }
+    }
+}
+
+.callout-info {
+    padding: 15px;
+    //margin-bottom: 15px;
+    background-color: lighten(@brand-info, 50%);
+    border-left: 7px solid @brand-info;
+    
+    a {
+        color: @brand-info !important;
+    }
+    
+    code {
+        background-color: transparent; 
+    }
+}
+
+.callout-warning {
+    padding: 15px;
+    //margin-bottom: 15px;
+    background-color: lighten(@brand-warning, 35%);
+    border-left: 7px solid @brand-warning;
+    
+    a {
+        color: @brand-danger !important;
+    }
+    
+    code {
+        background-color: transparent; 
+    }
+}
+
+.slideLeft {
+    ul {
+        left: 0% !important;
+        transition: left 500ms;
+        -moz-transition: left 500ms;
+        -webkit-transition: left 500ms;
+    }
+}
+
+
+.slideRight {
+    ul {
+        right: 50% !important;
+        transition: right 500ms;
+        -moz-transition: right 500ms;
+        -webkit-transition: right 500ms;
+    }
+}
+    
+#documentation {
+       
+    h2.section {
+        border-bottom: 1px solid @clouds;
+        margin-bottom: 30px;    
+    }
+
+    h1 {
+      word-break: break-all;
+    }
+
+    .fixed-accordion {
+        
+        .accordion-header {
+            position: fixed;
+            position: fixed;
+            top: 200px;
+        }
+
+        .accordion-content {}
+    }
+
+    code {
+        background-color: transparent;       
+    }
+
+    .label {
+        cursor: default;        
+    }
+    
+    .label-query {
+        background-color: @brand-primary;
+    }
+    
+    .label-path {
+        background-color: @brand-info;
+    }    
+
+    .label-body {
+        background-color: @brand-warning;
+    }
+
+    table {
+        code {
+            background-color: transparent;
+        }
+    }
+    
+    pre {
+        background-color: white;
+        color: @asbestos;
+        border-radius: 0;
+        border-left: 7px solid @clouds;
+        padding-left: 15px;
+    }
+    
+    .operation {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        
+        padding-top: 200px;
+        margin-top: -200px;
+        
+        .accordion-header {
+            color: @text-color;
+            background-color: rgba(236, 240, 241, 0.95);
+            //height: 50px;
+            display: block;
+            padding: 15px;
+            //border-top-left-radius: 4px;
+            //border-top-right-radius: 4px;
+            text-decoration: none !important;
+            
+
+            p:first-child {
+                //word-break:break-all;    
+            }
+
+            p:last-child {
+                margin: 0;
+            }
+
+            .monospace {
+                //white-space: nowrap; 
+                word-break:break-all;
+                line-height: 2em;
+            }
+
+            .method() {
+                color: white;
+                padding: 4px;
+                border-radius: 4px;
+            }
+
+            .method-GET {
+                background-color: @brand-primary;
+                .method();
+            }
+            
+            .method-POST {
+                background-color: @brand-info;
+                .method();
+            }
+            
+            .method-PUT {
+                background-color: @brand-warning;
+                .method();
+            }
+            
+            .method-DELETE {
+                background-color: @brand-danger;
+                .method();
+            }
+            
+            .method-PATCH {
+                background-color: @brand-warning;
+                .method();
+            }
+            
+            .path-GET {
+                color: @brand-primary;
+            }
+            
+            .path-POST {
+                color: @brand-info;
+            }
+            
+            .path-PUT {
+                color: @brand-warning;
+            }
+            
+            .path-DELETE {
+                color: @brand-danger;
+            }
+            
+            .path-PATCH {
+                color: @brand-warning;
+            }
+        }
+    }
+
+    .accordion-content {
+        margin-top: 15px;
+        //padding-left: 15px;
+        //padding-right: 15px;
+        overflow: hidden;
+    }
+    
+    .accordion-slide {
+        -webkit-transition: height 0.5s linear;
+        -moz-transition: height 0.5s linear;
+        transition: height 0.5s linear;
+    }
+    
+    .selected-version a {
+        background-color: white !important;    
+    }
+    
+    .versions {
+        width: 100%;
+        
+        li {
+            border-bottom: none !important;
+        }
+    }
+    
+    .nav-stacked a {
+        color: @text-color;
+    }
+    
+    .nav-stacked > li > a:hover, .nav-stacked > li > a:focus {
+        color: @brand-primary;
+        background-color: transparent;
+    }
+    
+    .nav-stacked > li.active > a, .nav-stacked > li.active > a:hover {
+        color: white;
+        background-color: @brand-primary;
+    }
+    
+    .nav-stacked > li + li {
+        margin-top: 0;    
+    }
+    
+    .nav-stacked li.active a {
+        border-radius: 0;
+    }
+    
+    .content {
+        //border-left: 1px solid @gray-lighter;
+        //padding-top: 150px;
+    }
+    
+    
+    .content {
+        
+    }
+    
+    .variable, .function {
+        margin-top: -200px;
+        padding-top: 200px;
+    }
+}
+
+#content {
+    section {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}

@@ -1,0 +1,41 @@
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+
+@-webkit-keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+
+#notfound {
+    #jsoniq {
+        width: 100%;
+        padding-bottom: 15px;
+    
+        a:hover, a:focus {
+            text-decoration: none !important;
+        }
+    
+        .button {
+            width: 1em;
+            height: 1em;
+            margin: 0.5em;
+        }
+    
+        .editor {
+            font-size: 2em;
+        }
+    
+        .text {
+            color: white;   
+        }
+    }
+
+    #cursor {
+        animation: blink 1s steps(5, start) infinite;
+        -webkit-animation: blink 1s steps(5, start) infinite;
+    }
+}

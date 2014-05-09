@@ -1,0 +1,15 @@
+{
+  "name": "28.io",
+  "version": "0.0.0",
+  "dependencies": {
+    "bootstrap": "~3.0.0",
+    "font-awesome": "~4.0.3",
+    "angular-bootstrap": "~0.6.0",
+    "angular": "v1.2.0",
+    "angular-route": "v1.2.0",
+    "angular-sanitize": "~1.0.8",
+    "angular-animate": "v1.2.0"
+ 
+  },
+  "devDependencies": {}
+}

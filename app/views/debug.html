@@ -1,0 +1,21 @@
+<div class="container" style="margin-bottom: 100px;">
+    <h1 class="text-center">Debug Documentation</h1>
+    <p class="text-center">Enter the URL of a swagger, JSONiq, or XQuery file to see how its documentation will look like on the website.</p>
+    <form class="form-inline" role="form" method="GET" action="/documentation/latest">
+        <input type="hidden" name="debug" value="true" />
+        <div class="form-group col-md-8">
+            <input type="text" name="url" class="form-control" placeholder="e.g. https://bazaar.launchpad.net/~28msec/sausalito/swagger_update/download/head:/_datasources-20131014163851-fr358d4f5i1wv5af-3/_datasources" />
+        </div>
+        <div class="form-group col-md-2">
+            <select class="form-control" name="state">
+                <option value="modules">xquery/jsoniq</option>
+                <option value="api">swagger</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-default">See it</button>
+    </form>
+    <br />
+    <div class="callout-warning">
+        <p>Non-external links will not work.</p>
+    </div>
+</div>
