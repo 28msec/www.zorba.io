@@ -442,8 +442,6 @@ angular.module('28.ioApp')
 
 
    $scope.getDoxygenURL = function () {
-
-       return 'http://bazaar.launchpad.net/~zorba-coders/zorba/trunk/view/head:/doc/zorba/' + $scope.item.id + '.dox';
-
+       return 'https://github.com/28msec/zorba/tree/master/doc/zorba' + $scope.item.id + '.dox';
    }
 });
