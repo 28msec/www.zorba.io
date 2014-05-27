@@ -9,7 +9,9 @@
     "angular-route": "v1.2.0",
     "angular-sanitize": "~1.0.8",
     "angular-animate": "v1.2.0"
- 
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "resolutions": {
+    "angular": "1.2.0"
+  }
 }

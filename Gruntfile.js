@@ -31,7 +31,7 @@ module.exports = function (grunt) {
   } catch (e) {}
 
   grunt.initConfig({
-    aws: grunt.file.readJSON("~/Dropbox/credentials/zorba-grunt-aws.json"),
+    aws: grunt.file.readJSON("/Users/wcandillon/Dropbox/credentials/zorba-grunt-aws.json"),
     yeoman: yeomanConfig,
     watch: {
       coffee: {
