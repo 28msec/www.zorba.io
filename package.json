@@ -1,9 +1,7 @@
 {
-  "name": "28io",
+  "name": "www.zorba.io",
   "version": "0.0.0",
   "dependencies": {
-    "libxmljs": "~0.8.1",
-    "grunt-lib-phantomjs": "~0.4.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -32,14 +30,12 @@
     "connect-modrewrite": "~0.5.4",
     "mkdirp": "~0.3.5",
     "async": "~0.2.9",
-    "phantom": "~0.5.2",
     "node-uuid": "~1.4.1",
     "aws-sdk": "~1.5.2",
     "grunt-html-build": "~0.2.2",
     "grunt-svgmin": "~0.2.0",
     "grunt-manifest": "~0.4.0",
     "grunt-s3": "~0.2.0-alpha.3",
-    "node-phantom-simple": "~1.0.15",
     "string": "~1.7.0"
   },
   "engines": {
