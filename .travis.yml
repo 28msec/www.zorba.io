@@ -16,6 +16,7 @@ deploy:
   secret_access_key:
     secure: Wpff7D4i6ZRRaye6KHxEDmHVwdM2M2vTkWYQsJvtJcEOuLeI6ly6RBwWCxJbB/1MG+sC+FFA9/ZfNBP0FT6+pj3ZPLWzTshwG0b2CK7dD/tbfVqaFuxhrTvl1vQzKGZcX22llwnaGCHaL62eMec0EgRxyTUskfo9Iw6eyfp+H34=
   bucket: www.zorba.io
+  skip_cleanup: true
   local-dir: dist
   on:
     repo: 28msec/www.zorba.io
