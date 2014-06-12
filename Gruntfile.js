@@ -17,7 +17,6 @@ var path = require('path');
 module.exports = function (grunt) {
   // load all grunt tasks
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
-  grunt.task.loadTasks('tasks');
   var modRewrite = require('connect-modrewrite');
 
   // configurable paths
@@ -31,7 +30,6 @@ module.exports = function (grunt) {
   } catch (e) {}
 
   grunt.initConfig({
-    aws: grunt.file.readJSON("/Users/wcandillon/Dropbox/credentials/zorba-grunt-aws.json"),
     yeoman: yeomanConfig,
     watch: {
       coffee: {
@@ -352,60 +350,7 @@ module.exports = function (grunt) {
           ]
         }
       }
-    },
-    s3: {
-      options: {
-        key: '<%= aws.key %>',
-        secret: '<%= aws.secret %>',
-        bucket: '<%= aws.devBucket %>',
-        access: 'public-read',
-        maxOperations: 5
-      },
-      dev: {
-        upload: [
-          {
-            src: '<%= yeoman.dist %>/**/*',
-            dest: '',
-            rel: '<%= yeoman.dist %>/',
-          }  
-        ]
-      },
-      prod: {
-        bucket: '<%= aws.prodBucket %>',
-        upload: [
-          {
-            src: '<%= yeoman.dist %>/**/*',
-            dest: '',
-            rel: '<%= yeoman.dist %>/',
-          }  
-        ]
-      }
-    },
-    snapshots2: {
-      options: {
-        sitemap: '<%= yeoman.app %>/sitemap.xml',
-        sitePath: 'http://test.zorba.io.s3-website-us-east-1.amazonaws.com',
-        dest: '<%= yeoman.dist %>',
-        index: '<%= yeoman.dist %>/index.html'
-      },
-      dev: {},
-      prod: {}
-    },
-    invalidate_cdn: {
-      options: {
-        key: '<%= aws.key %>',
-        secret: '<%= aws.secret %>',
-        distributionId: 'ELJWLU4GLJDPQ',
-        sitemap: '<%= yeoman.app %>/sitemap.xml',
-        directories: ['<%= yeoman.dist %>/views'],
-        cwd: '<%= yeoman.dist %>/'
-      },
-      dev: {}
-    },
-    es_index: {
-      options: {}, 
-      dev: {}
-    } 
+    }
   });
 
   grunt.registerTask('server', function (target) {
