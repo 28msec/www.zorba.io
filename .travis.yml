@@ -18,7 +18,7 @@ deploy:
     bucket: www.zorba.io
     skip_cleanup: true
     local-dir: dist
-    endpoint: site.zorba.io.s3-website-us-east-1.amazonaws.com
+    endpoint: www.zorba.io.s3-website-us-east-1.amazonaws.com
     detect_encoding: true
     on:
       branch: master
