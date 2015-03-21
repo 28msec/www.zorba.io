@@ -15,10 +15,10 @@ deploy:
     access_key_id: AKIAI6QIGHTTACHYG6MA
     secret_access_key:
       secure: Wpff7D4i6ZRRaye6KHxEDmHVwdM2M2vTkWYQsJvtJcEOuLeI6ly6RBwWCxJbB/1MG+sC+FFA9/ZfNBP0FT6+pj3ZPLWzTshwG0b2CK7dD/tbfVqaFuxhrTvl1vQzKGZcX22llwnaGCHaL62eMec0EgRxyTUskfo9Iw6eyfp+H34=
-    bucket: www.zorba.io
+    bucket: zorba.28.io
     skip_cleanup: true
     local-dir: dist
-    endpoint: www.zorba.io.s3-website-us-east-1.amazonaws.com
+    endpoint: zorba.28.io.s3-website-us-east-1.amazonaws.com
     detect_encoding: true
     on:
       branch: master
@@ -27,10 +27,10 @@ deploy:
     access_key_id: AKIAI6QIGHTTACHYG6MA
     secret_access_key:
       secure: Wpff7D4i6ZRRaye6KHxEDmHVwdM2M2vTkWYQsJvtJcEOuLeI6ly6RBwWCxJbB/1MG+sC+FFA9/ZfNBP0FT6+pj3ZPLWzTshwG0b2CK7dD/tbfVqaFuxhrTvl1vQzKGZcX22llwnaGCHaL62eMec0EgRxyTUskfo9Iw6eyfp+H34=
-    bucket: site.zorba.io
+    bucket: zorba-site.28.io
     skip_cleanup: true
     local-dir: dist
-    endpoint: site.zorba.io.s3-website-us-east-1.amazonaws.com
+    endpoint: zorba-site.28.io.s3-website-us-east-1.amazonaws.com
     detect_encoding: true
     on:
       branch: beta
