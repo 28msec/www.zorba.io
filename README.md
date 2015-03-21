@@ -1,4 +1,1 @@
-www.zorba.io [![Build Status](https://travis-ci.org/28msec/www.zorba.io.svg?branch=master)](https://travis-ci.org/28msec/www.zorba.io)
-============
-
-Zorba Website
+#www.zorba.io [![Circle CI](https://circleci.com/gh/28msec/www.zorba.io/tree/master.svg?style=svg)](https://circleci.com/gh/28msec/www.zorba.io/tree/master)

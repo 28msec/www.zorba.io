@@ -1,0 +1,57 @@
+.figure {
+    font-family: $font-family-monospace;
+    font-size: 14px;
+    border: 1px solid $gray-lighter;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    overflow: hidden;
+
+    .meta {
+        padding: 10px;
+        background-color: #f7f7f7;
+        border-bottom: 1px solid $gray-lighter;
+        font-family: $font-family-sans-serif;
+    }
+}
+
+table.code-snippet {
+    color: $gray;
+    white-space: pre;
+    table-layout: fixed;
+
+    tr {
+        >td:first-child {
+            width: 1%;
+            min-width: 50px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-right: 1px solid $gray-lighter;
+            color: $gray-light;
+            text-align: right;
+            &:before {
+                content: attr(data-line-number);
+            }
+        }
+
+        >td:last-child {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+
+    .string {
+        color: $brand-primary;
+    }
+
+    .keyword {
+        color: $brand-info;
+    }
+
+    .variable {
+        color: $turquoise;
+    }
+
+    .constant {
+        color: $brand-danger;
+    }
+}

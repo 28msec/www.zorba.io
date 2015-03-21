@@ -1,0 +1,179 @@
+@import "bootstrap";
+@import "ng-progress-lite";
+@import "snippets";
+@import "fonts";
+@import "bower_components/sass-flex-mixin/flex";
+
+@import "../home/home";
+
+@import "../developers/developers";
+@import "../development-tools/development-tools";
+
+@import "../pricing/pricing";
+
+@import "../customers/customers";
+
+@import "../datasources/datasources";
+
+@import "../company/company";
+@import "../company/about/about";
+@import "../company/team/team";
+@import "../company/contact/contact";
+
+@import "../documentation/documentation";
+@import "../documentation/datasources/datasources";
+
+@import "../welcome-ibm/welcome-ibm";
+
+@import "../blog/blog";
+
+@import "../jsoniq-the-sql-of-nosql/jsoniq-the-sql-of-nosql";
+
+@import "../not-found/not-found";
+
+[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}
+
+html {
+    height: 100%;
+    body {
+        height: 100%;
+        font-weight: 300;
+
+        .btn.btn-primary {
+            border: 2px solid $brand-primary;
+            background-color: white;
+            color: $brand-primary;
+            font-size: 18px;
+            &:hover {
+                color: #fff;
+                background-color: $brand-primary;
+            }
+        }
+
+        .features {
+            header {
+                margin-bottom: 0;
+            }
+
+            section {
+                h2 {
+                    color: $brand-primary;
+                }
+
+                border-bottom: 1px solid $gray-lighter;
+                padding-top: 6em;
+                padding-bottom: 6em;
+
+                .picto {
+                    text-align: center;
+                    img {
+                        height: 350px;
+                        width: auto;
+                    }
+                }
+            }
+        }
+
+        .btn-primary {
+            &:hover {
+                background-color: $emerald;
+                border: 1px solid $brand-primary;
+            }
+        }
+
+        > header {
+            $logo-height: $navbar-height - 10px;
+
+            nav.navbar-small {
+
+            }
+
+            .logo-background {
+                fill: url("#bg");
+            }
+
+            nav {
+                border: 0 !important;
+
+                @include flexbox;
+                @include flex-direction;
+                @include align-items(center);
+                @include justify-content(center);
+
+                -webkit-box-shadow: 0 2px 2px -1px rgba(0, 0, 0, .1);
+                box-shadow: 0 2px 2px -1px rgba(0, 0, 0, .1);
+
+                .navbar-brand {
+                    padding-top: ($navbar-height - $logo-height) / 2;
+                    > img {
+                        height: $logo-height;
+                        width: auto;
+
+                        .logo-background {
+                            fill: $brand-primary;
+                        }
+                    }
+                }
+
+                .active {
+                    border-top: 1px solid $navbar-default-link-active-bg;
+                    border-bottom: 1px solid $navbar-default-link-active-bg;
+                }
+
+            }
+        }
+
+        > article {
+            padding-top: $navbar-height;
+
+            header {
+                border-bottom: 1px solid $gray-lighter;
+                padding-top: 2em;
+                padding-bottom: 2em;
+                margin-bottom: 2em;
+
+                h1 {
+                    color: $brand-primary !important;
+                    //font-weight: 300;
+                }
+            }
+        }
+
+        > footer {
+            background-color: $gray-lighter;
+            color: $gray-light;
+            padding-top: 2em;
+            margin-top: 2em;
+            font-weight: 100;
+
+            h4, h5 {
+                font-weight: 100;
+            }
+
+            .fa {
+                font-size: 4em;
+            }
+        }
+    }
+}
+
+@media (max-width: $screen-sm-min) {
+    .navbar-toggle {
+        color: $brand-primary !important;
+        border: none !important;
+
+        &:hover {
+            background-color: $clouds !important;
+        }
+    }
+
+    nav.navbar-default {
+        display: block !important;
+    }
+}
+
+body[user-agent*='MSIE '], body[user-agent*='Firefox']{
+    .logo-background {
+        fill: lighten($brand-primary, 7.5%) !important;
+    }
+}
