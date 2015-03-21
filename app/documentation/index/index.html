@@ -1,0 +1,8 @@
+<div class="row" id="documentation-index" ng-controller="DocumentationIndexCtrl">
+    <div class="col-sm-6 col-md-4 col-lg-3" ng-repeat="child in children">
+        <a class="thumbnail"
+           ng-href="{{getPath(child)}}"
+           ng-bind="child.label">
+        </a>
+    </div>
+</div>

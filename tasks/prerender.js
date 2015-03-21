@@ -13,7 +13,7 @@ var jsdom = require('jsdom').jsdom;
 var Config = require('./config');
 
 var prerender = 'http://prerender28.herokuapp.com/';
-var endpoint = 'http://' + Config.bucketName + '.s3-website-us-east-1.amazonaws.com';//'http://zorba.28.io';
+var endpoint = 'http://' + Config.bucketName + '.s3-website-us-east-1.amazonaws.com';//'http://www.28.io';
 var jsdomOpts = {
     FetchExternalResources: false,
     ProcessExternalResources: false,
@@ -27,7 +27,7 @@ gulp.task('prerender', function(){
     }
 
     var tpl = fs.readFileSync('dist/index.html', 'utf-8');
-    var base = 'http://zorba.28.io';
+    var base = 'http://www.28.io';
     var urls = [];
     var xml = fs.readFileSync(Config.paths.sitemap, 'utf8');
     xml = parse(xml);
@@ -94,8 +94,8 @@ gulp.task('prerender', function(){
     return _.chain(urls)
         .sortBy()
         .filter(function(url){
-            if(url.substring(0, 'http://zorba.28.io/documentation'.length) === 'http://zorba.28.io/documentation' &&
-                url.substring(0, 'http://zorba.28.io/documentation/latest'.length) !== 'http://zorba.28.io/documentation/latest' ) {
+            if(url.substring(0, 'http://www.28.io/documentation'.length) === 'http://www.28.io/documentation' &&
+                url.substring(0, 'http://www.28.io/documentation/latest'.length) !== 'http://www.28.io/documentation/latest' ) {
                 return false;
             }
             return true;

@@ -1,0 +1,48 @@
+<div class="row" id="documentation-module" ng-controller="DocumentationModuleCtrl">
+    <div class="col-sm-4 col-lg-3 hidden-xs">
+        <h3 ng-show="xqdoc.functions.length > 0">Functions</h3>
+        <ul>
+            <li ng-repeat="fn in xqdoc.functions">
+                <a ng-href="#{{fn.name}}-{{fn.arity}}">
+                    <span ng-bind="fn.name"></span>#<span ng-bind="fn.arity"></span>
+                </a>
+            </li>
+        </ul>
+        <h3 ng-show="content.variables.length > 0">Variables</h3>
+        <ul>
+            <li ng-repeat="var in xqdoc.variables">
+                <a href="#{{var.name}}">${{var.name}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-sm-8 col-lg-9">
+        <h2 ng-bind="xqdoc.ns"></h2>
+        <p>View as <a ng-href="{{xmlURL}}" target="_blank">XML</a> or <a ng-href="{{jsonURL}}" target="_blank">JSON</a>.</p>
+        <div ng-bind-html="xqdoc.description"></div>
+        <div ng-show="xqdoc.functions.length > 0" class="functions">
+            <h2>Functions</h2>
+            <div ng-repeat="fn in xqdoc.functions" class="function" id="{{fn.name}}-{{fn.arity}}">
+                <h3>{{fn.name}}#{{fn.arity}}</h3>
+                <pre>declare{{fn.annotation_str}} function {{fn.qname}}{{fn.signature}}</pre>
+                <div ng-bind-html="fn.description"></div>
+                <h4 ng-show="fn.parameters.length">Parameters</h4>
+                <dl ng-repeat="param in fn.parameters">
+                    <dt>{{param.name}} as {{param.type}}{{param.occurrence}}</dt>
+                    <dd ng-bind-html="param.description"></dd>
+                </dl>
+                <h4>Returns</h4>
+                <dl>
+                    <dt>{{fn.returns.type}}</dt>
+                    <dd ng-bind-html="fn.returns.description"></dd>
+                </dl>
+            </div>
+        </div>
+        <div ng-show="xqdoc.variables.length > 0" class="variables">
+            <h2>Variables</h2>
+            <div ng-repeat="var in xqdoc.variables" id="{{var.name}}" class="variable">
+                <pre>${{var.name}} as {{var.type}}</pre>
+                <div ng-bind-html="var.description"></div>
+            </div>
+        </div>
+    </div>
+</div>

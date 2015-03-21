@@ -1,0 +1,272 @@
+<xqdoc:xqdoc xmlns:xqdoc="http://www.xqdoc.org/1.0"><xqdoc:control><xqdoc:date>2015-02-17T14:42:36.342765+02:00</xqdoc:date><xqdoc:version>1.0</xqdoc:version></xqdoc:control><xqdoc:module type="library"><xqdoc:uri>http://www.28msec.com/modules/http-request</xqdoc:uri><xqdoc:name>http-request</xqdoc:name><xqdoc:comment><xqdoc:description> The request module provides functions for accessing
+ information contained in the HTTP request used to evaluate the current
+ query. For example, the <tt>param-names</tt> function can be used to
+ retrieve all the names of the parameters contained in a request.
+</xqdoc:description><xqdoc:author>Matthias Brantner</xqdoc:author><xqdoc:custom tag="language">xquery</xqdoc:custom><xqdoc:custom tag="version">3.0</xqdoc:custom><xqdoc:custom tag="encoding">utf-8</xqdoc:custom></xqdoc:comment><xqdoc:custom tag="namespaces"><xqdoc:namespace prefix="err" uri="http://www.w3.org/2005/xqt-errors" isSchema="false"/><xqdoc:namespace prefix="req" uri="http://www.28msec.com/modules/http/request#2.0" isSchema="false"/><xqdoc:namespace prefix="request" uri="http://www.28msec.com/modules/http-request" isSchema="false"/><xqdoc:namespace prefix="ver" uri="http://zorba.io/options/versioning" isSchema="false"/></xqdoc:custom></xqdoc:module><xqdoc:imports><xqdoc:import type="library"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri></xqdoc:import></xqdoc:imports><xqdoc:variables/><xqdoc:collections/><xqdoc:indexes/><xqdoc:functions><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> <p>Returns an object containg the parameter names and values contained
+ in the URL's query string or the body of a POST or PUT
+ request.</p>
+ <p>The structure of the object for the query string
+ "param1=value1;param2&amp;param2=value2"
+ <pre>
+ {
+   "param1" : "value1",
+   "param2" : [ "", "value2" ]
+ }
+ </pre>
+ </p>
+ <p>Parameters are name-value pairs contained in the query string of the URL
+ used to make this request. As defined in RFC 1738, the query string of a
+ URL starts with a "?" character and ends with the character (if any).
+ Additionally, such name-value pairs may be part of the request's body if
+ it is a PUT or POST request and the content-type of the request is
+ "application/x-www-form-urlencoded". Name-value pairs are separated
+ using either the "&amp;" or the ";" character.</p>
+ <p>In general, the names and the values  are precent-encoded. This function
+ does the decoding of the parameters, i.e. it returns the values being
+ not percent-encoded.</p>
+ <p>Also, the names and the values of each parameter (after being precent-decoded)
+ are treated as UTF-8. Please see the <tt>http:params#1</tt> function
+ for retrieving parameters submitted using a encoding other than UTF-8.</p>
+</xqdoc:description><xqdoc:return>An object containing all the parameter names and values. An empty object is returned if the request doesn't contain any parameters.</xqdoc:return></xqdoc:comment><xqdoc:name>request:params</xqdoc:name><xqdoc:signature>declare function request:params() as object()</xqdoc:signature><xqdoc:return><xqdoc:type>object()</xqdoc:type></xqdoc:return><xqdoc:invoked arity="1"><xqdoc:uri>http://www.28msec.com/modules/http-request</xqdoc:uri><xqdoc:name>params</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="1"><xqdoc:comment><xqdoc:description> <p>Returns an object containg the parameter names and values contained
+ in the URL's query string or the body of a POST or PUT
+ request.</p>
+ <p>The structure of the object for the query string
+ "param1=value1;param2&amp;param2=value2"
+ <pre>
+ {
+   "param1" : "value1",
+   "param2" : [ "", "value2" ]
+ }
+ </pre>
+ </p>
+ <p>Parameters are name-value pairs contained in the query string of the URL
+ used to make this request. As defined in RFC 1738, the query string of a
+ URL starts with a "?" character and ends with the character (if any).
+ Additionally, such name-value pairs may be part of the request's body if
+ it is a PUT or POST request and the content-type of the request is
+ "application/x-www-form-urlencoded". Name-value pairs are separated
+ using either the "&amp;" or the ";" character.</p>
+ <p>In general, the names and the values  are precent-encoded. This function
+ does the decoding of the parameters, i.e. it returns the values being
+ not percent-encoded.</p>
+ <p>The name and value of each parameter (after being percent-decoded) are treated
+ in the encoding given by the <tt>$encoding</tt> paramter.</p>
+</xqdoc:description><xqdoc:param>$encoding The encoding of the parameters in the request (e.g. ISO-8859-1)</xqdoc:param><xqdoc:return>An object containing all the parameter names and values. An empty object is returned if the request doesn't contain any parameters.</xqdoc:return><xqdoc:error>request:invalid-encoding if the given encoding is invalid or not supported.</xqdoc:error></xqdoc:comment><xqdoc:name>request:params</xqdoc:name><xqdoc:signature>declare function request:params($encoding as xs:string) as object()</xqdoc:signature><xqdoc:parameters><xqdoc:parameter><xqdoc:name>encoding</xqdoc:name><xqdoc:type>xs:string</xqdoc:type></xqdoc:parameter></xqdoc:parameters><xqdoc:return><xqdoc:type>object()</xqdoc:type></xqdoc:return><xqdoc:invoked arity="1"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>parameter-names</xqdoc:name></xqdoc:invoked><xqdoc:invoked arity="3"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>parameter-values</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="1"><xqdoc:comment><xqdoc:description> <p>Returns a sequence of parameter values for the given parameter name
+ which are contained in the URL's query string or the body of a POST or PUT
+ request.</p>
+ <p>Parameters are name-value pairs contained in the query string of the URL
+ used to make this request. As defined in RFC 1738, the query string of a
+ URL starts with a "?" character and ends with the character (if any).
+ Additionally, such name-value pairs may be part of the request's body if
+ it is a PUT or POST request and the content-type of the request is
+ "application/x-www-form-urlencoded". Name-value pairs are separated
+ using either the "&amp;" or the ";" character.</p>
+ <p>In general, the names and the values  are precent-encoded. This function
+ does the decoding of the parameters, i.e. it returns the values being
+ not percent-encoded.</p>
+ <p>Also, the names and the values of each parameter (after being precent-decoded)
+ are treated as UTF-8. Please see the <tt>http:param-values#3</tt> function
+ for retrieving parameters submitted using a encoding other than UTF-8.</p>
+ <p>This function returns the empty-sequence if no parameter with the
+ given name exists in this request. If you want the function to return
+ a default value other than the empty sequence, use the
+ <tt>http:param-values#2</tt> function.</p>
+ <p>A URL could contain the following query string:
+ <tt>name1=value1&amp;name2=value2;name1=value3&amp;name3</tt>.
+ <tt>name1=value1&amp;name2=value2&amp;name1=value3&amp;name3</tt>.
+ The name value pairs in this query string are
+ <ul>
+   <li> name: <tt>name1</tt>; values: <tt>value1</tt> and <tt>value3</tt></li>
+   <li> name: <tt>name2</tt>; value: <tt>value2</tt></li>
+   <li> name: <tt>name3</tt>; value: <tt/></li>
+ </ul>
+ </p>
+</xqdoc:description><xqdoc:param>$name The name of the parameter whose value(s) should be returned.</xqdoc:param><xqdoc:return>A sequence of values for the parameter with the given name. The empty sequence is returned if no parameter exists with the given name.</xqdoc:return></xqdoc:comment><xqdoc:name>request:param-values</xqdoc:name><xqdoc:signature>declare function request:param-values($name as xs:string) as xs:string*</xqdoc:signature><xqdoc:parameters><xqdoc:parameter><xqdoc:name>name</xqdoc:name><xqdoc:type>xs:string</xqdoc:type></xqdoc:parameter></xqdoc:parameters><xqdoc:return><xqdoc:type occurrence="*">xs:string*</xqdoc:type></xqdoc:return><xqdoc:invoked arity="2"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>parameter-values</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="2"><xqdoc:comment><xqdoc:description> <p>Returns a sequence of parameter values for the given parameter name
+ which are contained in the URL's query string or the body of a POST or PUT
+ request.</p>
+ <p>This function is similar to the <tt>request:param-values#1</tt> function.
+ However, instead of returning the empty-sequence as a default value it returns
+ the given default-values sequence if no parameter with the given name is found
+ in this request.</p>
+</xqdoc:description><xqdoc:param>$name The name of the parameter whose value(s) should be returned.</xqdoc:param><xqdoc:param>$default_param Default value that is returned if the request does not contain a parameter with the given name.</xqdoc:param><xqdoc:return>A sequence of values for the parameter with the given name. The sequence given as $default-values parameter is returned if no parameter exists with the given name.</xqdoc:return></xqdoc:comment><xqdoc:name>request:param-values</xqdoc:name><xqdoc:signature>declare function request:param-values($name as xs:string, $default-values as xs:string*) as xs:string*</xqdoc:signature><xqdoc:parameters><xqdoc:parameter><xqdoc:name>name</xqdoc:name><xqdoc:type>xs:string</xqdoc:type></xqdoc:parameter><xqdoc:parameter><xqdoc:name>default-values</xqdoc:name><xqdoc:type occurrence="*">xs:string</xqdoc:type></xqdoc:parameter></xqdoc:parameters><xqdoc:return><xqdoc:type occurrence="*">xs:string*</xqdoc:type></xqdoc:return><xqdoc:invoked arity="3"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>parameter-values</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="3"><xqdoc:comment><xqdoc:description> <p>Returns a sequence of parameter values for the given parameter name
+ which are contained in the URL's query string or the body of a POST or PUT
+ request.</p>
+ <p>This function is similar to the <tt>request:param-values#2</tt> function.
+ However, the names and values are treated (after precent-decoding) using the
+ given encoding supplied as third parameter. For example, parameters might
+ be encoded using the ISO-8859-1 encoding.</p>
+</xqdoc:description><xqdoc:param>$name The name of the parameter whose value(s) should be returned.</xqdoc:param><xqdoc:param>$default_param Default value that is returned if the request does not contain a parameter with the given name.</xqdoc:param><xqdoc:param>$encoding The encoding of the parameters in the request (e.g. ISO-8859-1)</xqdoc:param><xqdoc:return>A sequence of values for the parameter with the given name. The sequence given as $default-values parameter is returned if no parameter exists with the given name.</xqdoc:return><xqdoc:error>request:invalid-encoding if the given encoding is invalid or not supported.</xqdoc:error></xqdoc:comment><xqdoc:name>request:param-values</xqdoc:name><xqdoc:signature>declare function request:param-values($name as xs:string, $default-values as xs:string*, $encoding as xs:string) as xs:string*</xqdoc:signature><xqdoc:parameters><xqdoc:parameter><xqdoc:name>name</xqdoc:name><xqdoc:type>xs:string</xqdoc:type></xqdoc:parameter><xqdoc:parameter><xqdoc:name>default-values</xqdoc:name><xqdoc:type occurrence="*">xs:string</xqdoc:type></xqdoc:parameter><xqdoc:parameter><xqdoc:name>encoding</xqdoc:name><xqdoc:type>xs:string</xqdoc:type></xqdoc:parameter></xqdoc:parameters><xqdoc:return><xqdoc:type occurrence="*">xs:string*</xqdoc:type></xqdoc:return><xqdoc:invoked arity="3"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>parameter-values</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> <p>Returns the names of the parameters contained in the current request.</p>
+ <p>Parameters are name-value pairs contained in the query string of the URL
+ used to make this request. As defined in RFC 1738, the query string of a
+ URL starts with a "?" character and ends with the character (if any).
+ Additionally, such name-value pairs may be part of the request's body if
+ it is a PUT or POST request and the content-type of the request is
+ "application/x-www-form-urlencoded". Name-value pairs are separated
+ using either the "&amp;" or the ";" character.</p>
+ <p>In general, the names and the values  are precent-encoded. This function
+ does the decoding of the parameters, i.e. it returns the values being
+ not percent-encoded.</p>
+ <p>Also, the names of each parameter (after being precent-decoded) are
+ treated as UTF-8. Please see the <tt>http:param-names#1</tt> function
+ for retrieving parameter names submitted using a encoding other than UTF-8.
+ </p>
+</xqdoc:description><xqdoc:return>The names of all parameters in this request. The empty sequence is returned if there are none.</xqdoc:return></xqdoc:comment><xqdoc:name>request:param-names</xqdoc:name><xqdoc:signature>declare function request:param-names() as xs:string*</xqdoc:signature><xqdoc:return><xqdoc:type occurrence="*">xs:string*</xqdoc:type></xqdoc:return><xqdoc:invoked arity="1"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>parameter-names</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="1"><xqdoc:comment><xqdoc:description> <p>Returns the names of the parameters contained in the current request.</p>
+ <p>This function is similar to the <tt>request:param-names#0</tt> function.
+ However, the names are treated (after precent-decoding) using the
+ given encoding supplied as parameter. For example, parameters might
+ be encoded using the ISO-8859-1 encoding.</p>
+</xqdoc:description><xqdoc:param>$encoding The encoding of the parameters in the request (e.g. ISO-8859-1).</xqdoc:param><xqdoc:return>The names of all parameters in this request. The empty sequence is returned if there are none.</xqdoc:return><xqdoc:error>request:invalid-encoding if the given encoding is invalid or not supported.</xqdoc:error></xqdoc:comment><xqdoc:name>request:param-names</xqdoc:name><xqdoc:signature>declare function request:param-names($encoding as xs:string) as xs:string*</xqdoc:signature><xqdoc:parameters><xqdoc:parameter><xqdoc:name>encoding</xqdoc:name><xqdoc:type>xs:string</xqdoc:type></xqdoc:parameter></xqdoc:parameters><xqdoc:return><xqdoc:type occurrence="*">xs:string*</xqdoc:type></xqdoc:return><xqdoc:invoked arity="1"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>parameter-names</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> <p>Returns the name of the HTTP method used to make this request.</p>
+</xqdoc:description><xqdoc:return>The request method used to make this request (i.e. GET, POST, PUT, DELETE or HEAD).</xqdoc:return></xqdoc:comment><xqdoc:name>request:method</xqdoc:name><xqdoc:signature>declare function request:method() as xs:string</xqdoc:signature><xqdoc:return><xqdoc:type>xs:string</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>method</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> Returns true if the HTTP method of this request is POST.
+</xqdoc:description><xqdoc:return>true if the HTTP method of this request is POST, false otherwise.</xqdoc:return></xqdoc:comment><xqdoc:name>request:method-post</xqdoc:name><xqdoc:signature>declare function request:method-post() as xs:boolean</xqdoc:signature><xqdoc:return><xqdoc:type>xs:boolean</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>method-post</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> Returns true if the HTTP method of this request is GET.
+</xqdoc:description><xqdoc:return>true if the HTTP method of this request is GET, false otherwise.</xqdoc:return></xqdoc:comment><xqdoc:name>request:method-get</xqdoc:name><xqdoc:signature>declare function request:method-get() as xs:boolean</xqdoc:signature><xqdoc:return><xqdoc:type>xs:boolean</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>method-get</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> Returns true if the HTTP method of this request is PUT.
+</xqdoc:description><xqdoc:return>true if the HTTP method of this request is PUT, false otherwise.</xqdoc:return></xqdoc:comment><xqdoc:name>request:method-put</xqdoc:name><xqdoc:signature>declare function request:method-put() as xs:boolean</xqdoc:signature><xqdoc:return><xqdoc:type>xs:boolean</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>method-put</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> Returns true if the HTTP method of this request is DELETE.
+</xqdoc:description><xqdoc:return>true if the HTTP method of this request is DELETE, false otherwise.</xqdoc:return></xqdoc:comment><xqdoc:name>request:method-delete</xqdoc:name><xqdoc:signature>declare function request:method-delete() as xs:boolean</xqdoc:signature><xqdoc:return><xqdoc:type>xs:boolean</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>method-delete</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> Returns true if the HTTP method of this request is HEAD.
+</xqdoc:description><xqdoc:return>true if the HTTP method of this request is HEAD, false otherwise.</xqdoc:return></xqdoc:comment><xqdoc:name>request:method-head</xqdoc:name><xqdoc:signature>declare function request:method-head() as xs:boolean</xqdoc:signature><xqdoc:return><xqdoc:type>xs:boolean</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>method-head</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> Returns true if the HTTP method of this request is OPTION.
+</xqdoc:description><xqdoc:return>true if the HTTP method of this request is OPTION, false otherwise.</xqdoc:return></xqdoc:comment><xqdoc:name>request:method-options</xqdoc:name><xqdoc:signature>declare function request:method-options() as xs:boolean</xqdoc:signature><xqdoc:return><xqdoc:type>xs:boolean</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>method-options</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> <p>Returns the user agent that made to perform the current request.</p>
+ <p>This function returns the value of the User-Agent header
+ contained in the current request.</p>
+</xqdoc:description><xqdoc:return>The user agent used to perform this request of the empty sequence if there was no User-Agent header in the request.</xqdoc:return></xqdoc:comment><xqdoc:name>request:user-agent</xqdoc:name><xqdoc:signature>declare function request:user-agent() as xs:string?</xqdoc:signature><xqdoc:return><xqdoc:type occurrence="?">xs:string?</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>user-agent</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> <p>Returns the sever port to which the client making the current request
+ is connected.</p>
+</xqdoc:description><xqdoc:return>The server port to which the client is connected.</xqdoc:return></xqdoc:comment><xqdoc:name>request:server-port</xqdoc:name><xqdoc:signature>declare function request:server-port() as xs:int</xqdoc:signature><xqdoc:return><xqdoc:type>xs:int</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>server-port</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> <p>Returns the server name of the server running the application.</p>
+ <p>The web server's hostname or IP address.</p>
+</xqdoc:description><xqdoc:return>The name of the server that runs the application accepting this request.</xqdoc:return></xqdoc:comment><xqdoc:name>request:server-name</xqdoc:name><xqdoc:signature>declare function request:server-name() as xs:string</xqdoc:signature><xqdoc:return><xqdoc:type>xs:string</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>server-name</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> <p>Returns the port of the client to which this request is connected.</p>
+</xqdoc:description><xqdoc:return>The port on the client side to which this request is connected.</xqdoc:return></xqdoc:comment><xqdoc:name>request:remote-port</xqdoc:name><xqdoc:signature>declare function request:remote-port() as xs:int</xqdoc:signature><xqdoc:return><xqdoc:type>xs:int</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>remote-port</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> <p>Returns the IP address of the client to which this request
+ is connected.</p>
+</xqdoc:description><xqdoc:return>The IP address on the client side to which this request is connected.</xqdoc:return></xqdoc:comment><xqdoc:name>request:remote-addr</xqdoc:name><xqdoc:signature>declare function request:remote-addr() as xs:string</xqdoc:signature><xqdoc:return><xqdoc:type>xs:string</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>remote-addr</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> <p>Returns the URI that was used to make this request.</p>
+ <p>The value returned contains the part of the URL starting
+ from the path to the end or the starting of the fragment (i.e.
+ the '#' character).</p>
+</xqdoc:description><xqdoc:return>The path and query string part of the request's URL</xqdoc:return></xqdoc:comment><xqdoc:name>request:uri</xqdoc:name><xqdoc:signature>declare function request:uri() as xs:string</xqdoc:signature><xqdoc:return><xqdoc:type>xs:string</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>uri</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> Return the path component of the request URI. The path starts after the
+ host and ends before the query string starts.
+</xqdoc:description><xqdoc:return>The path component of the request URI</xqdoc:return></xqdoc:comment><xqdoc:name>request:path</xqdoc:name><xqdoc:signature>declare function request:path() as xs:string</xqdoc:signature><xqdoc:return><xqdoc:type>xs:string</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http-request</xqdoc:uri><xqdoc:name>uri</xqdoc:name></xqdoc:invoked><xqdoc:invoked arity="2"><xqdoc:uri>http://www.w3.org/2005/xpath-functions</xqdoc:uri><xqdoc:name>tokenize</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> <p>Returns the query string that was used to make this request.</p>
+ <p>The query string contains the part of the request URL that
+ starts with the '?' character to the end or the starting of the
+ fragment (i.e. the '#' character).</p>
+</xqdoc:description><xqdoc:return>The query string part of the request's URL</xqdoc:return></xqdoc:comment><xqdoc:name>request:query</xqdoc:name><xqdoc:signature>declare function request:query() as xs:string</xqdoc:signature><xqdoc:return><xqdoc:type>xs:string</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>query-string</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> <p>Returns the content-type of the data sent with this request.</p>
+ <p>Note that the content-type is only set for PUT and POST requests.</p>
+</xqdoc:description><xqdoc:return>The content-type of the request if it is a PUT or POST request. Otherwise, it returns the empty sequence.</xqdoc:return><xqdoc:see><a href="#get-content-0">get-content</a></xqdoc:see></xqdoc:comment><xqdoc:name>request:content-type</xqdoc:name><xqdoc:signature>declare function request:content-type() as xs:string?</xqdoc:signature><xqdoc:return><xqdoc:type occurrence="?">xs:string?</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>content-type</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> <p>Returns the length of the content in bytes.</p>
+ <p>The value returned corresponds to the value of the HTTP
+ content-length header. The function returns an empty sequence
+ if this header does not exist in the request or its value
+ could not be converted to item of type xs:integer</p>.
+</xqdoc:description><xqdoc:return>The content-length in bytes of the content sent with this request or the empty sequence if the content-length header does not exist in the request.</xqdoc:return><xqdoc:see><a href="#content-0">content</a></xqdoc:see></xqdoc:comment><xqdoc:name>request:content-length</xqdoc:name><xqdoc:signature>declare function request:content-length() as xs:integer?</xqdoc:signature><xqdoc:return><xqdoc:type occurrence="?">xs:integer?</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>content-length</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> <p>Returns the content of the request as string.</p>
+ <p>The function returns the content of the request only
+ if the content-type refers to a type that can be treated
+ as text (e.g. text/* or application/xml). The function raises
+ an error if the content cannot be treated as text.</p>
+ <p>The text content is interpreted using the encoding/charset
+ that is specified in the Content-Type header of the request. If
+ no charset is specified, the default ISO-8859-1 is used. If a encoding
+ other than the specified or default one should be used, the
+ <tt>request:text-content#1</tt> function should be used.</p>
+</xqdoc:description><xqdoc:return>The content of the request as a string.</xqdoc:return><xqdoc:error>request:invalid-encoding if the encoding specified in the Content-Type header is invalid or not supported.</xqdoc:error><xqdoc:error>request:no-text-content if the content contained in the body of the request cannot be treated as text.</xqdoc:error></xqdoc:comment><xqdoc:name>request:text-content</xqdoc:name><xqdoc:signature>declare function request:text-content() as xs:string</xqdoc:signature><xqdoc:return><xqdoc:type>xs:string</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>text-content</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="1"><xqdoc:comment><xqdoc:description> <p>Returns the content of the request as string interpreting
+ it with the given encoding.</p>
+ <p>The function returns the content of the request only
+ if the content-type refers to a type that can be treated
+ as text (e.g. text/* or application/xml). The function raises
+ an error if the content cannot be treated as text.</p>
+ <p>The text content is interpreted using the given encoding/charset.
+ That is, the charset specified in the Content-Type header of the request
+ is ignored. An error is raised if the given encoding is invalid
+ or not supported.</p>
+</xqdoc:description><xqdoc:param>overwrite-encoding the encoding that should be used to interpret the content of the request.</xqdoc:param><xqdoc:return>The content of the request as a string.</xqdoc:return><xqdoc:error>request:invalid-encoding if the encoding specified in the Content-Type header or the $overwrite-encoding parameter is invalid or not supported.</xqdoc:error><xqdoc:error>request:no-text-content if the content contained in the body of the request cannot be treated as text.</xqdoc:error></xqdoc:comment><xqdoc:name>request:text-content</xqdoc:name><xqdoc:signature>declare function request:text-content($overwrite-encoding as xs:string) as xs:string</xqdoc:signature><xqdoc:parameters><xqdoc:parameter><xqdoc:name>overwrite-encoding</xqdoc:name><xqdoc:type>xs:string</xqdoc:type></xqdoc:parameter></xqdoc:parameters><xqdoc:return><xqdoc:type>xs:string</xqdoc:type></xqdoc:return><xqdoc:invoked arity="1"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>text-content</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> <p>Returns the content of the request as base64Binary.</p>
+</xqdoc:description><xqdoc:return>The content of the request as base64Binary.</xqdoc:return><xqdoc:error>request:no-binary-content if the content contained in the body of the request cannot be treated as binary because it is a request with multipart or url-encoded content.</xqdoc:error></xqdoc:comment><xqdoc:name>request:binary-content</xqdoc:name><xqdoc:signature>declare function request:binary-content() as xs:base64Binary</xqdoc:signature><xqdoc:return><xqdoc:type>xs:base64Binary</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>binary-content</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> <p>Returns an object containing the request's HTTP header names and
+ values.</p>
+ <p>Header fields are colon-separated name-value pairs, terminated
+ by a carriage return (CR) and line feed (LF) character sequence. The
+ names and values of each header are allowed to consist of US-ASCII
+ characters only.</p>
+ <p>The structure of the object is as shown in the following example:
+ <pre>
+ </pre>
+ </p>
+ <p>All headers having a name that starts with SAUSALITO_ are reserved
+ and will not be returned by this function.</p>
+</xqdoc:description><xqdoc:return>The header value of the header with the <tt>$name</tt> argument or the empty sequence if no header with that name is contained in the request.</xqdoc:return></xqdoc:comment><xqdoc:name>request:headers</xqdoc:name><xqdoc:signature>declare function request:headers() as object()</xqdoc:signature><xqdoc:return><xqdoc:type>object()</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>header-names</xqdoc:name></xqdoc:invoked><xqdoc:invoked arity="1"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>header-value</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="1"><xqdoc:comment><xqdoc:description> <p>Returns the value of the HTTP header with the given name.</p>
+ <p>Header fields are colon-separated name-value pairs, terminated
+ by a carriage return (CR) and line feed (LF) character sequence. The
+ names and values of each header are allowed to consist of US-ASCII
+ characters only.</p>
+ <p>Please note that header names are considered case-insensitive.
+ Also note, that only one value is returned if multiple headers with the
+ same names exist in the request. This value is a comma-separated list
+ of the values of the headers in the order in which the headers appeared
+ in the request.</p>
+ <p>All headers having a name that starts with SAUSALITO_ are reserved
+ and will not be returned by this function.</p>
+</xqdoc:description><xqdoc:param>$name The header name for which the value should be returned.</xqdoc:param><xqdoc:return>The header value of the header with the <tt>$name</tt> argument or the empty sequence if no header with that name is contained in the request.</xqdoc:return></xqdoc:comment><xqdoc:name>request:header-value</xqdoc:name><xqdoc:signature>declare function request:header-value($name as xs:string) as xs:string?</xqdoc:signature><xqdoc:parameters><xqdoc:parameter><xqdoc:name>name</xqdoc:name><xqdoc:type>xs:string</xqdoc:type></xqdoc:parameter></xqdoc:parameters><xqdoc:return><xqdoc:type occurrence="?">xs:string?</xqdoc:type></xqdoc:return><xqdoc:invoked arity="1"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>header-value</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> <p>Returns the names of all the HTTP headers in this request.</p>
+ <p>Header fields are colon-separated name-value pairs, terminated
+ by a carriage return (CR) and line feed (LF) character sequence. The
+ names and values of each header are allowed to consist of US-ASCII
+ characters only.</p>
+ <p>The names of the headers are returned using upper-case letters.
+ If a header with the same name is contained multiple times in a request,
+ its name is only returned once. The order of the names in the resulting
+ sequence does not reflect the order of the headers in the request. If
+ a header does not have a value, it is as if the header does not exist
+ in the request.</p>
+ <p>Note that the header names user-agent and content-type are not
+ returned by this function. They are returned by the corresponding
+ functions of this module module
+ (e.g. <a href="#user-agent-0">user-agent</a>).</p>
+</xqdoc:description><xqdoc:return>The names of the headers of this request or the empty sequence if no headers are contained in the request.</xqdoc:return></xqdoc:comment><xqdoc:name>request:header-names</xqdoc:name><xqdoc:signature>declare function request:header-names() as xs:string*</xqdoc:signature><xqdoc:return><xqdoc:type occurrence="*">xs:string*</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>header-names</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> <p>Returns the values of the HTTP ACCEPT header.</p>
+ <p>The data is returned as a sequence of objects
+ as shown in the following example.</p>
+ <pre>
+ {
+   "type" : "text",
+   "subtype" : "html",
+   "quality" : 1
+ }
+ </pre>
+</xqdoc:description><xqdoc:return>The header values of the header ACCEPT or the empty sequence if the header is not contained in the request. The order of the returned objects reflects the order of the components in the header.</xqdoc:return><xqdoc:error>request:invalid-header if the accept header cannot be parsed</xqdoc:error></xqdoc:comment><xqdoc:name>request:header-accept</xqdoc:name><xqdoc:signature>declare function request:header-accept() as object()*</xqdoc:signature><xqdoc:return><xqdoc:type occurrence="*">object()*</xqdoc:type></xqdoc:return><xqdoc:invoked arity="1"><xqdoc:uri>http://www.28msec.com/modules/http-request</xqdoc:uri><xqdoc:name>header-value</xqdoc:name></xqdoc:invoked><xqdoc:invoked arity="1"><xqdoc:uri>http://www.w3.org/2001/XMLSchema</xqdoc:uri><xqdoc:name>QName</xqdoc:name></xqdoc:invoked><xqdoc:invoked arity="1"><xqdoc:uri>http://www.w3.org/2001/XMLSchema</xqdoc:uri><xqdoc:name>double</xqdoc:name></xqdoc:invoked><xqdoc:invoked arity="2"><xqdoc:uri>http://www.w3.org/2005/xpath-functions</xqdoc:uri><xqdoc:name>error</xqdoc:name></xqdoc:invoked><xqdoc:invoked arity="1"><xqdoc:uri>http://www.w3.org/2005/xpath-functions</xqdoc:uri><xqdoc:name>normalize-space</xqdoc:name></xqdoc:invoked><xqdoc:invoked arity="2"><xqdoc:uri>http://www.w3.org/2005/xpath-functions</xqdoc:uri><xqdoc:name>subsequence</xqdoc:name></xqdoc:invoked><xqdoc:invoked arity="2"><xqdoc:uri>http://www.w3.org/2005/xpath-functions</xqdoc:uri><xqdoc:name>substring</xqdoc:name></xqdoc:invoked><xqdoc:invoked arity="3"><xqdoc:uri>http://www.w3.org/2005/xpath-functions</xqdoc:uri><xqdoc:name>substring</xqdoc:name></xqdoc:invoked><xqdoc:invoked arity="2"><xqdoc:uri>http://www.w3.org/2005/xpath-functions</xqdoc:uri><xqdoc:name>tokenize</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="0"><xqdoc:comment><xqdoc:description> <p>Returns the metadata of all parts contained in a multipart request.</p>
+ <p>The metadata is returned as an object
+ as shown in the following example.</p>
+ <pre>
+ {
+   "media-type" : "multipart/form-data; boundary=----------------------------93298e7a66a4",
+   "parts" : [ {
+     "headers" : {
+       "Content-Disposition" : "form-data; name=\"upload\"; filename=\"tmp.txt\"",
+       "Content-Type" : "text/plain"
+     },
+     "filename" : "tmp.txt",
+     "name" : "upload",
+     "src" : "urn:uuid:09be48d1-da0e-42c1-a115-a697e1779c45",
+     "size" : "153"
+   }, {
+     "headers" : {
+       "Content-Disposition" : "form-data; name=\"press\""
+     },
+     "name" : "press",
+     "src" : "urn:uuid:c80e0609-b703-4d47-9171-441eb397a562",
+     "size" : "2"
+   } ]
+ }
+ </pre>
+ <p>The <tt>media-type</tt> field describes the content-type as given in the
+ request. Specifically, its value is equal to the value returned by
+ <tt>request:header-values("Content-Type")</tt>).</p>
+ <p>Each of the array members of the <tt>parts</tt> field represents one
+ part of the multipart request. Each such part contains a header field
+ containing one field for each headers belonging to that part.
+ The value of the <tt>src</tt> field can be used to retrieve the actual value
+ of the part by passing it to the <tt>http:text-part</tt> or
+ <tt>http:binary-part</tt> functions. The remaining fields represent a
+ parameter of the Content-Disposition header as described in RFC 2183
+ (e.g. filename, name, creation-date).</p>
+ <p>Please note that recursive multipart content is not supported.</p>
+</xqdoc:description><xqdoc:return>an object representing the metadata of the multipart content or an empty sequence if there is no content.</xqdoc:return><xqdoc:error>request:non-multipart if the current request does not contain multipart content</xqdoc:error><xqdoc:error>request:invalid-multipart if the multipart content is invalid (e.g. the boundary is missing)</xqdoc:error></xqdoc:comment><xqdoc:name>request:parts</xqdoc:name><xqdoc:signature>declare function request:parts() as object()?</xqdoc:signature><xqdoc:return><xqdoc:type occurrence="?">object()?</xqdoc:type></xqdoc:return><xqdoc:invoked arity="0"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>parts</xqdoc:name></xqdoc:invoked><xqdoc:invoked arity="1"><xqdoc:uri>http://www.w3.org/2005/xpath-functions</xqdoc:uri><xqdoc:name>local-name</xqdoc:name></xqdoc:invoked><xqdoc:invoked arity="1"><xqdoc:uri>http://www.w3.org/2005/xpath-functions</xqdoc:uri><xqdoc:name>string</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="1"><xqdoc:comment><xqdoc:description> <p>Returns the value of a part as base64Binary.</p>
+ <p>A part is identified by a reference that is the value of a
+ <tt>src</tt> field returned by the <tt>request:parts</tt> function.</p>
+</xqdoc:description><xqdoc:param>$ref the name of the part</xqdoc:param><xqdoc:return>the value of the part as base64Binary</xqdoc:return><xqdoc:error>request:invalid-part if the part with the given name ($ref) does not exist</xqdoc:error><xqdoc:error>request:non-multipart if the current request does not contain multipart content</xqdoc:error><xqdoc:error>request:invalid-multipart if the multipart content is invalid (e.g. the boundary is missing)</xqdoc:error></xqdoc:comment><xqdoc:name>request:binary-part</xqdoc:name><xqdoc:signature>declare function request:binary-part($ref as xs:string) as xs:base64Binary</xqdoc:signature><xqdoc:parameters><xqdoc:parameter><xqdoc:name>ref</xqdoc:name><xqdoc:type>xs:string</xqdoc:type></xqdoc:parameter></xqdoc:parameters><xqdoc:return><xqdoc:type>xs:base64Binary</xqdoc:type></xqdoc:return><xqdoc:invoked arity="1"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>binary-part</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="1"><xqdoc:comment><xqdoc:description> <p>Returns the value of a part as string</p>
+ <p>A part is identified by a reference that is the value of a
+ <tt>src</tt> field returned by the <tt>request:parts</tt> function.</p>
+ <p>The value of the text part is interpreted using the encoding/charset
+ given in the headers of the part. If no encoding is given, the default
+ US-ASCII is assumed.</p>
+</xqdoc:description><xqdoc:param>$ref the name of the part</xqdoc:param><xqdoc:return>the value of the part as string</xqdoc:return><xqdoc:error>request:invalid-encoding if the encoding given in the headers of the part is invalid or not supported.</xqdoc:error><xqdoc:error>request:no-text-content if the value of the part cannot be treated as text</xqdoc:error><xqdoc:error>request:invalid-part if the part with the given name ($ref) does not exist</xqdoc:error><xqdoc:error>request:non-multipart if the current request does not contain multipart content</xqdoc:error><xqdoc:error>request:invalid-multipart if the multipart content is invalid (e.g. the boundary is missing)</xqdoc:error></xqdoc:comment><xqdoc:name>request:text-part</xqdoc:name><xqdoc:signature>declare function request:text-part($ref as xs:string) as xs:string</xqdoc:signature><xqdoc:parameters><xqdoc:parameter><xqdoc:name>ref</xqdoc:name><xqdoc:type>xs:string</xqdoc:type></xqdoc:parameter></xqdoc:parameters><xqdoc:return><xqdoc:type>xs:string</xqdoc:type></xqdoc:return><xqdoc:invoked arity="1"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>text-part</xqdoc:name></xqdoc:invoked></xqdoc:function><xqdoc:function arity="2"><xqdoc:comment><xqdoc:description> <p>Returns the value of a part as string interpreting
+ it with the given encoding.</p>
+ <p>A part is identified by a reference that is the value of a
+ <tt>src</tt> field returned by the <tt>request:parts</tt> function.</p>
+</xqdoc:description><xqdoc:param>$ref the name of the part</xqdoc:param><xqdoc:param>overwrite-encoding the encoding that should be used to interpret the content of the part</xqdoc:param><xqdoc:return>the value of the part as string</xqdoc:return><xqdoc:error>request:invalid-encoding if the encoding given using the $overwrite-encoding parameter is invalid or not supported.</xqdoc:error><xqdoc:error>request:no-text-content if the value of the part cannot be treated as text</xqdoc:error><xqdoc:error>request:invalid-part if the part with the given name ($ref) does not exist</xqdoc:error><xqdoc:error>request:non-multipart if the current request does not contain multipart content</xqdoc:error><xqdoc:error>request:invalid-multipart if the multipart content is invalid (e.g. the boundary is missing)</xqdoc:error></xqdoc:comment><xqdoc:name>request:text-part</xqdoc:name><xqdoc:signature>declare function request:text-part($ref as xs:string, $overwrite-encoding as xs:string) as xs:string</xqdoc:signature><xqdoc:parameters><xqdoc:parameter><xqdoc:name>ref</xqdoc:name><xqdoc:type>xs:string</xqdoc:type></xqdoc:parameter><xqdoc:parameter><xqdoc:name>overwrite-encoding</xqdoc:name><xqdoc:type>xs:string</xqdoc:type></xqdoc:parameter></xqdoc:parameters><xqdoc:return><xqdoc:type>xs:string</xqdoc:type></xqdoc:return><xqdoc:invoked arity="2"><xqdoc:uri>http://www.28msec.com/modules/http/request#2.0</xqdoc:uri><xqdoc:name>text-part</xqdoc:name></xqdoc:invoked></xqdoc:function></xqdoc:functions></xqdoc:xqdoc>

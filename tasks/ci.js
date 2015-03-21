@@ -117,7 +117,7 @@ gulp.task('load-config', ['decrypt'], function(){
 
     var Mustache = require('mustache');
     Config.credentials = JSON.parse(fs.readFileSync(Config.paths.credentials, 'utf-8'));
-    /*
+/*
     //Fetch documentation
     var urls = [];
     var addUrl = function(item, version, isLatest, current){

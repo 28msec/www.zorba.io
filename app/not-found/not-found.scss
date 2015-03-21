@@ -1,0 +1,95 @@
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+
+@-webkit-keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+
+#not-found {
+    .jsoniq {
+
+        font-size: $font-size-h4;
+
+        a:hover, a:focus {
+            text-decoration: none !important;
+        }
+
+        background-color: $clouds;
+
+        border-radius: 3px;
+
+        .button {
+            border-radius: 50%;
+            height: 10px;
+            width: 10px;
+            margin: 5px;
+            float: left;
+        }
+
+        .klose {
+            background-color: $alizarin;
+        }
+
+        .minimize {
+            background-color: $sun-flower;
+        }
+
+        .expand {
+            background-color: $nephritis;
+        }
+
+        .editor {
+            clear: both;
+            margin-top: 15px;
+            background-color: $wet-asphalt;
+            height: 100%;
+            @include border-top-radius(0);
+            font-family: $font-family-monospace;
+            padding: 3px;
+            color: $concrete;
+
+            .keyword {
+                color: $sun-flower;
+            }
+
+            .variable {
+                color: $turquoise;
+            }
+
+            .string {
+                color: $nephritis;
+            }
+
+            .number {
+                color: $alizarin;
+            }
+
+            .fn {
+                color: $peter-river;
+            }
+
+            .path {
+                color: lighten($concrete, 15%);
+            }
+
+            .text {
+                color: white;
+            }
+
+            .counter {
+                margin-right: 15px;
+            }
+        }
+    }
+
+    #cursor {
+        background-color: $nephritis;
+        animation: blink 1s steps(5, start) infinite;
+        -webkit-animation: blink 1s steps(5, start) infinite;
+    }
+}

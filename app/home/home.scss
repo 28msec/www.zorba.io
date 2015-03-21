@@ -1,0 +1,102 @@
+#home {
+    .hero-unit {
+        height: auto !important;
+        min-height: calc(100vh - #{$navbar-height});
+
+        @include flexbox;
+        @include flex-direction(column);
+        @include align-items(center);
+
+        .content {
+            width: 100%;
+            margin-top: auto;
+            h1 {
+                font-weight: 100;
+                margin-top: 0;
+                font-size: $font-size-h1 * $golden-ratio;
+                em {
+                    color: $brand-primary;
+                }
+            }
+
+            .btn-lg.btn-primary {
+                margin-top: $font-size-h1 * $golden-ratio;
+                border: 1px solid white;
+                background-color: transparent;
+                color: white;
+                font-weight: 200;
+                font-size: $jumbotron-font-size;
+                &:hover {
+                    background-color: white;
+                    color: $brand-primary;
+                }
+            }
+        }
+
+        .bottom-shelf {
+            margin-top: auto;
+            text-align: center;
+            color: $gray-light;
+            font-size: $font-size-base * 2;
+
+            >a {
+                width: 50px;
+                height: 50px;
+                display: block;
+                margin-bottom: $std-space;
+                border-radius: 50%;
+                border: 1px solid $gray-light;
+                color: $gray-light;
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    .jumbotron {
+        background-color: $brand-primary;
+
+        .light-text {
+            color: rgba(255, 255, 255, .8) !important;
+            &.btn {
+                border: 1px solid rgba(255, 255, 255, .8);
+                &:hover {
+                    color: $brand-primary !important;
+                }
+            }
+        }
+
+        .content {
+            p {
+                font-size: $font-size-h3;
+            }
+        }
+
+        .bottom-shelf {
+            >a {
+                color: white;
+                border: 1px solid white;
+            }
+        }
+    }
+}
+
+#sections {
+  .fa {
+    font-size: $font-size-h1;
+    margin-top: 22px;
+  }
+}
+
+@media (max-width: $screen-sm-min) {
+    .content {
+        h1 {
+            margin-top: $std-space !important;
+        }
+    }
+
+    .bottom-shelf a {
+        display: none !important;
+    }
+}
