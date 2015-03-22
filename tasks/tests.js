@@ -17,7 +17,7 @@ gulp.task('server:dist', function(done) {
     browserSync({
         port: 9000,
         notify: false,
-        logPrefix: 'www.28.io',
+        logPrefix: 'zorba.28.io',
         open: false,
         server: {
             baseDir: ['dist'],
@@ -33,7 +33,7 @@ gulp.task('server:dev', function(done) {
     browserSync({
         port: 9000,
         notify: false,
-        logPrefix: 'www.28.io',
+        logPrefix: 'zorba.28.io',
         server: {
             baseDir: ['.', Config.paths.app],
             middleware: [

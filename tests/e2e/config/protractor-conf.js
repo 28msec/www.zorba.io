@@ -2,8 +2,6 @@
 
 var config = require('./protractor-shared-conf').config;
 
-config.capabilities = {
-    browserName: 'chrome'
-};
+config.capabilities.browserName = 'chrome';
 
 exports.config = config;
