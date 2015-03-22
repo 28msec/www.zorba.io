@@ -1,4 +1,4 @@
-#28.io Website [![Circle CI](https://circleci.com/gh/28msec/www.zorba.io/tree/master.svg?style=svg)](https://circleci.com/gh/28msec/www.zorba.io/tree/master)
+#Zorba Website [![Circle CI](https://circleci.com/gh/28msec/www.zorba.io/tree/master.svg?style=svg)](https://circleci.com/gh/28msec/www.zorba.io/tree/master)
 
 ## Installation
 
@@ -22,10 +22,4 @@ $ export TRAVIS_SECRET_KEY=<secret> # to decrypt / encrypt config files
 
 ```bash
 $ gulp server
-```
-
-## Deployment
-
-```bash
-$ gulp 28:setup --build-id=test
 ```
