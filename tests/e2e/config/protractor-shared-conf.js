@@ -2,15 +2,18 @@
 'use strict';
 
 var HtmlReporter = require('protractor-html-screenshot-reporter');
+var Config = require('./config').config;
 
-exports.config = {
+var config = {
     allScriptsTimeout: 30000,
 
     baseUrl: 'http://localhost:9000',
 
     framework: 'jasmine',
 
-    specs: ['../*-scenario.js'], 
+    capabilities: {},
+
+    specs: ['tests/e2e/*-scenario.js'],
 
     onPrepare: function() {
         // Disable animations so e2e tests run more quickly
@@ -26,24 +29,35 @@ exports.config = {
         browser.getCapabilities().then(function(caps) {
             browser.params.browser = caps.get('browserName');
         });
-
+/*
         //Login
-        var config = require('./config').config;
-        //var Auth = require('../../../app/auth/auth-page');
-        //var auth = new Auth();
-        //auth.visitPage();
-        //auth.login(config.testUser, config.testPassword);
-        //browser.waitForAngular();
+        var Auth = require('../../../app/auth/auth-page');
+        var auth = new Auth();
+        auth.visitPage();
+        auth.login(Config.testUser, Config.testPassword);
+        browser.waitForAngular();
 
-        if(config.environment === 'ci' || config.environment === 'prod') {
+        if(Config.environment === 'ci' || Config.environment === 'prod') {
             // Add a screenshot reporter and store screenshots to config.e2eReportsDir:
             jasmine.getEnv().addReporter(new HtmlReporter({
-                baseDirectory: config.e2eReportsDir
+                baseDirectory: Config.e2eReportsDir
             }));
         }
+        */
     },
 
     jasmineNodeOpts: {
         defaultTimeoutInterval: 100000
     }
 };
+
+if(Config.proxy !== ''){
+    config.capabilities = {
+        'proxy': {
+            'proxyType': 'manual',
+            'httpProxy': Config.proxy
+        }
+    };
+}
+
+exports.config = config;

@@ -10,8 +10,8 @@ config.multiCapabilities = [
     'browserName': 'chrome',
     'platform': 'OS X 10.9',
     'name': 'NoLAP Report Editor',
-    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-    'build': process.env.TRAVIS_BUILD_NUMBER,
+    'tunnel-identifier': process.env.CIRCLE_BUILD_NUM,
+    'build': process.env.CIRCLE_BUILD_NUM + '-' + process.env.CIRCLE_NODE_INDEX,
     'version': '34'
 }
 //, {
