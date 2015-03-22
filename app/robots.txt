@@ -1,4 +1,4 @@
 # robotstxt.org
 
 User-agent: *
-Sitemap: http://www.zorba.io/sitemap.xml
+Sitemap: http://zorba.28.io/sitemap.xml

@@ -1,17 +1,21 @@
 {
-  "name": "28.io",
+  "name": "www.28.io",
   "version": "0.0.0",
   "dependencies": {
-    "bootstrap": "~3.0.0",
-    "font-awesome": "~4.0.3",
-    "angular-bootstrap": "~0.6.0",
-    "angular": "v1.2.0",
-    "angular-route": "v1.2.0",
-    "angular-sanitize": "~1.0.8",
-    "angular-animate": "v1.2.0"
+    "angular-ui-router": "~0.2.13",
+    "angular": "1.2.9",
+    "font-awesome": "4.2.0",
+    "ngprogress-lite": "~1.0.5",
+    "angular-sanitize": "~1.2.18",
+    "markdown-js": "~0.6.2",
+    "angulartics": "~0.17.1",
+    "angular-scroll": "~0.6.2",
+    "bootstrap-sass-official": "~3.3.1",
+    "angular-bootstrap": "~0.12.0",
+    "sass-flex-mixin": "https://github.com/mastastealth/sass-flex-mixin.git#ef4a13621c17e04c87786b26eef7d4d960a50209",
+    "lodash": "~3.5.0"
   },
-  "devDependencies": {},
   "resolutions": {
-    "angular": "1.2.0"
+    "angular": "1.2.9"
   }
 }

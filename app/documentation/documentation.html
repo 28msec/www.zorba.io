@@ -1,0 +1,20 @@
+<header>
+    <div class="container">
+        <h1>
+            Developer Resources
+        </h1>
+        <!--input class="form-control input-lg search-box" type="text" placeholder="Search">
+        <br-->
+        <ol class="breadcrumb">
+            <li ng-repeat="element in stack">
+                <a ng-if="!$last" ng-href="{{element.href}}" ng-bind="element.label"></a>
+                <span ng-if="$last" ng-bind="element.label"></span>
+            </li>
+        </ol>
+    </div>
+</header>
+<div class="container">
+    <div ng-if="type === 'index'" ng-include="'/documentation/index/index.html'"></div>
+    <div ng-if="type === 'module'" ng-include="'/documentation/module/module.html'"></div>
+    <div ng-if="type === 'zorba'" ng-include="'/data/documentation/3.0-Kratos/zorba/' + index.id + '.html'"></div>
+</div>
