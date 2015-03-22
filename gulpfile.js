@@ -74,7 +74,7 @@ gulp.task('seo', function(done){
 });
 
 gulp.task('setup', function(done){
-    $.runSequence('build', 's3-setup', 'server:dist', 'test:e2e', 'seo', 'server:stop', done);
+    $.runSequence('build', 's3-setup', 'server:dist', 'seo', 'server:stop', done);
 });
 
 gulp.task('teardown', ['load-config'], function(done){
