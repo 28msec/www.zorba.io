@@ -8,6 +8,6 @@ dependencies:
     - bower install
 test:
   override:
-    - gulp setup
+    - gulp setup --build-id="$CIRCLE_BUILD_NUM"
   post:
-    - gulp teardown
+    - gulp teardown --build-id="$CIRCLE_BUILD_NUM"
