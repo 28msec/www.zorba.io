@@ -76,6 +76,8 @@ gulp.task('test:e2e', ['webdriver:update'], function() {
         args.push('--baseUrl');
         args.push('http://' + Config.bucketName + '.s3-website-us-east-1.amazonaws.com');
     }
+    console.log('isOnTravis: ' + Config.isOnTravis);
+    console.log('isOnProduction:' + Config.isOnProduction);
     return gulp.src(protractorConfig.config.specs)
         .pipe($.protractor.protractor({
             configFile: configFile,
