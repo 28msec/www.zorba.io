@@ -24,9 +24,13 @@ angular.module('zorba.28.io')
         $scope.index = index[index.length - 1];
         if($scope.index.ns) {
             $scope.type = 'module';
-        } else if ($scope.index.id === 'data-sources') {
-            $scope.type = 'datasources';
-        } else if($scope.index.url) {
-            $scope.type = 'api';
+        } else if ($scope.index.url && $scope.index.url.substring(0, 'zorba'.length) === 'zorba') {
+            $scope.type = 'zorba';
         }
+
+        console.log($scope.index);
+
+        $scope.getDoxygenURL = function () {
+            return 'https://github.com/28msec/zorba/blob/master/doc/zorba/' + $scope.index.id + '.dox';
+        };
     });
