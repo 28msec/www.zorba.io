@@ -1,4 +1,4 @@
-#28.io Website [![Build Status](https://travis-ci.org/28msec/www.28.io.svg?branch=master)](https://travis-ci.org/28msec/www.28.io)
+#28.io Website [![Circle CI](https://circleci.com/gh/28msec/www.zorba.io/tree/master.svg?style=svg)](https://circleci.com/gh/28msec/www.zorba.io/tree/master)
 
 ## Installation
 
