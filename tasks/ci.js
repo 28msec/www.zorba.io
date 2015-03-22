@@ -115,7 +115,7 @@ gulp.task('decrypt-force', ['env-check'], $.shell.task(cmds.decrypt));
 
 gulp.task('load-config', ['decrypt'], function(){
 
-    var Mustache = require('mustache');
+    //var Mustache = require('mustache');
     Config.credentials = JSON.parse(fs.readFileSync(Config.paths.credentials, 'utf-8'));
 /*
     //Fetch documentation
