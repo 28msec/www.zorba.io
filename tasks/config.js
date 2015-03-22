@@ -8,7 +8,7 @@ var knownOptions = {
 };
 var buildId = minimist(process.argv.slice(2), knownOptions)['build-id'];
 var isOnTravis = process.env.CIRCLE_BUILD_NUM !== undefined;
-var isOnTravisAndMaster = isOnTravis && process.env.CIRCLE_BRANCH === 'master' && process.env.CI_PULL_REQUEST === 'false';
+var isOnTravisAndMaster = isOnTravis && process.env.CIRCLE_BRANCH === 'master' && process.env.CI_PULL_REQUEST === '';
 
 var bucketName = isOnTravisAndMaster ? 'zorba.28.io' : 'zorba.28.io-' + buildId;
 var projectName = isOnTravisAndMaster ? 'zorba.28.io' : 'zorba.28.io-' + buildId;
