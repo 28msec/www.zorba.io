@@ -111,7 +111,7 @@ return fs:write-text($file || "/modules/" || substring-before($name, ".xml") || 
                             "url": "zorba/python_windows_tutorial.html"
                         }]
                     }, {
-                        "id": "cli",
+                        "id": "commandline",
                         "label": "Command Line Utility",
                         "url": "zorba/commandline.html"
                     }, {
