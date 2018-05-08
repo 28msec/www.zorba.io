@@ -42,7 +42,7 @@
     "map-stream": "0.0.5",
     "minimist": "^1.1.0",
     "mkdirp": "^0.5.0",
-    "mustache": "^1.0.0",
+    "mustache": "2.2.1",
     "netdna": "0.0.6",
     "protractor": "~1.0.0",
     "protractor-html-screenshot-reporter": "0.0.17",
